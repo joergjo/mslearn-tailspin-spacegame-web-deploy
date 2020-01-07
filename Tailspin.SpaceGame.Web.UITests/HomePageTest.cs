@@ -30,27 +30,26 @@ namespace UITests
                 // The NuGet package for each browser installs driver software
                 // under the bin directory, alongside the compiled test code.
                 // This tells the driver class where to find the underlying driver software.
-#if DEBUG
                 var cwd = Environment.CurrentDirectory;
-#endif
+
                 // Create the driver for the current browser.
                 switch (browser)
                 {
                     case "Chrome":
 #if RELEASE
-                        var cwd = Environment.GetEnvironmentVariable("ChromeWebDriver"); 
+                        cwd = Environment.GetEnvironmentVariable("ChromeWebDriver"); 
 #endif
                         driver = new ChromeDriver(cwd);
                         break;
                     case "Firefox":
 #if RELEASE
-                        var cwd = Environment.GetEnvironmentVariable("GeckoWebDriver"); 
+                        cwd = Environment.GetEnvironmentVariable("GeckoWebDriver"); 
 #endif
                         driver = new FirefoxDriver(cwd);
                         break;
                     case "IE":
 #if RELEASE
-                        var cwd = Environment.GetEnvironmentVariable("IEWebDriver"); 
+                        cwd = Environment.GetEnvironmentVariable("IEWebDriver"); 
 #endif
                         driver = new InternetExplorerDriver(cwd);
                         break;
